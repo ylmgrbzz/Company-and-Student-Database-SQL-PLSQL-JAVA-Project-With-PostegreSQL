@@ -1,10 +1,10 @@
---  5 numaralı departmanda çalışan işçilerin ad,soyad bilgilerini listeleyen sorgu
+--  5 numaralı departmanda çalışan işçilerin ad,soyad bilgilerini listeleyen sorgu.
 
 SELECT fname,lname
 FROM employee
 WHERE dno=5
 
--- “Sales” departmanının hangi şehirlerde ofisi olduğunu bulan sorgu
+-- “Sales” departmanının hangi şehirlerde ofisi olduğunu bulan sorgu.
 
 SELECT dlocation
 FROM department d, dept_locations dl
