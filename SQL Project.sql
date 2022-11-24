@@ -106,3 +106,23 @@ WHERE dnumber IN (SELECT dno FROM employee WHERE fname='John')
 SELECT COUNT(*),SUM(salary),MAX(salary),MIN(salary),AVG(salary)
 FROM department, employee
 WHERE dname='Sales' AND dnumber=dno
+
+-- "8 numaralı departmanda çalışan işçilerin ortalama ve  toplam maaşları"
+
+SELECT avg(salary) as otalama, 
+sum(salary) as toplam 
+FROM employee e
+WHERE e.dno = 8
+
+-- "«Middleware» projesinde kaç kişinin çalıştığını ve bu  çalışanların ortalama maaşları"
+
+SELECT count(*) AS calisan_sayisi, 
+avg(salary)
+FROM employee e, works_on w, project p
+WHERE e.snn = w.essn AND w.pno = p.pnumber AND p.pname = ‘Middleware'
+
+-- "En genç çalışanın çalıştığı projelerin numaraları"
+
+SELECT count(*) AS calisan_sayisi, avg(salary)
+FROM employee e, works_on w, project p
+WHERE e.snn = w.essn AND w.pno = p.pnumber AND p.pname = ‘Middleware"
