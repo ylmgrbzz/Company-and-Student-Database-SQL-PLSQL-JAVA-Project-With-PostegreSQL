@@ -100,38 +100,3 @@ WHERE NOT EXISTS (SELECT * FROM department WHERE mgrssn=ssn)
 SELECT dname
 FROM department 
 WHERE dnumber IN (SELECT dno FROM employee WHERE fname='John')
-
---‘Sales’ departmanında kaç kişinin çalıştığı, en düşük, en yüksek, ortalama ve toplam maaş. 
-
-SELECT COUNT(*),SUM(salary),MAX(salary),MIN(salary),AVG(salary)
-FROM department, employee
-WHERE dname='Sales' AND dnumber=dno
-
--- "8 numaralı departmanda çalışan işçilerin ortalama ve  toplam maaşları"
-
-SELECT avg(salary) as otalama, 
-sum(salary) as toplam 
-FROM employee e
-WHERE e.dno = 8
-
--- "«Middleware» projesinde kaç kişinin çalıştığını ve bu  çalışanların ortalama maaşları"
-
-SELECT count(*) AS calisan_sayisi, 
-avg(salary)
-FROM employee e, works_on w, project p
-WHERE e.snn = w.essn AND w.pno = p.pnumber AND p.pname = ‘Middleware'
-
-
--- "En genç çalışanın çalıştığı projelerin numaraları"
-
-SELECT pno
-FROM employee, works_on
-WHERE ssn=essn AND bdate IN (SELECT MAX(bdate) FROM employee) 
-
---  "Project tablosunu dnum kolonuna göre gruplandırılması  ve herbir departmanda kaç tane proje olduğu"
-
-SELECT pno
-FROM employee, works_on
-WHERE ssn=essn AND bdate IN (SELECT MAX(bdate)
-FROM employee)
-
