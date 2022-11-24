@@ -122,7 +122,7 @@ FROM employee e, works_on w, project p
 WHERE e.snn = w.essn AND w.pno = p.pnumber AND p.pname = ‘Middleware'
 
 
--- "En genç çalışanın çalıştığı projelerin numaralarI"
+-- "En genç çalışanın çalıştığı projelerin numaraları"
 
 SELECT pno
 FROM employee, works_on
