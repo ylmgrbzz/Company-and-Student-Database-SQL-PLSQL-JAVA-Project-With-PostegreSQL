@@ -121,3 +121,17 @@ avg(salary)
 FROM employee e, works_on w, project p
 WHERE e.snn = w.essn AND w.pno = p.pnumber AND p.pname = ‘Middleware'
 
+
+-- "En genç çalışanın çalıştığı projelerin numaralarI"
+
+SELECT pno
+FROM employee, works_on
+WHERE ssn=essn AND bdate IN (SELECT MAX(bdate) FROM employee) 
+
+--  "Project tablosunu dnum kolonuna göre gruplandırılması  ve herbir departmanda kaç tane proje olduğu"
+
+SELECT pno
+FROM employee, works_on
+WHERE ssn=essn AND bdate IN (SELECT MAX(bdate)
+FROM employee)
+
